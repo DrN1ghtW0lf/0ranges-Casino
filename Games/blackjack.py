@@ -1,5 +1,5 @@
 #================= Imports =================#
-from Games.framework import bcolors, clear, read, write, end_print
+from framework import bcolors, clear, read, write, end_print
 from random import randint
 import time
 import os
