@@ -55,5 +55,3 @@ Roulette is one of those classic games we see in movies and everyone knows what 
 - Coinflip
 - Slots
 - User suggestions
-
-- Add print_win() function
