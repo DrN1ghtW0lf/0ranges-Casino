@@ -1,0 +1,139 @@
+#================= Imports =================#
+from framework import bcolors, clear
+from random import randint
+import os
+
+#================= Function =================#
+def transform_hand(given_hand):
+    for index, card in enumerate(given_hand):
+        i = randint(1,3)
+        if card == "1":
+            if total <= 10:
+                given_hand[index] = "A (11)"
+            else:
+                given_hand[index] = "A (1)"
+        elif card == "10":
+            if i == 1:
+                given_hand[index] = "J"
+            elif i == 2:
+                given_hand[index] = "Q"
+            else:
+                given_hand[index] = "K"
+
+def end():
+    print(f"Your total was {bcolors.RED_B}{total}{bcolors.ENDC}\nThe dealer's total was {bcolors.GREEN_B}{dealer_total}{bcolors.ENDC}\n")
+    if total > 21:
+        if dealer_total > 21:
+            print(f"{bcolors.TURQUOISE}.------..------..------..------.\n|D.--. ||R.--. ||A.--. ||W.--. |\n| :/\: || :(): || (\/) || :/\: |\n| (__) || ()() || :\/: || :\/: |\n| '--'D|| '--'R|| '--'A|| '--'W|\n`------'`------'`------'`------'{bcolors.ENDC}")
+        else:
+            print(f"{bcolors.RED_B}.------..------..------..------..------..------.\n|B.--. ||U.--. ||S.--. ||T.--. ||E.--. ||D.--. |\n| :(): || (\/) || :/\: || :/\: || (\/) || :/\: |\n| ()() || :\/: || :\/: || (__) || :\/: || (__) |\n| '--'B|| '--'U|| '--'S|| '--'T|| '--'E|| '--'D|\n`------'`------'`------'`------'`------'`------'{bcolors.ENDC}")
+    elif total < 21:
+        if dealer_total > 21:
+            print(f"{bcolors.GREEN_B}.------..------..------.\n|W.--. ||I.--. ||N.--. |\n| :/\: || (\/) || :(): |\n| :\/: || :\/: || ()() |\n| '--'W|| '--'I|| '--'N|\n`------'`------'`------'{bcolors.ENDC}")
+        elif dealer_total > total or dealer_total == 21:
+            print(f"{bcolors.RED_B}.------..------..------..------..------..------.\n|B.--. ||U.--. ||S.--. ||T.--. ||E.--. ||D.--. |\n| :(): || (\/) || :/\: || :/\: || (\/) || :/\: |\n| ()() || :\/: || :\/: || (__) || :\/: || (__) |\n| '--'B|| '--'U|| '--'S|| '--'T|| '--'E|| '--'D|\n`------'`------'`------'`------'`------'`------'{bcolors.ENDC}")
+        else:
+            print(f"{bcolors.GREEN_B}.------..------..------.\n|W.--. ||I.--. ||N.--. |\n| :/\: || (\/) || :(): |\n| :\/: || :\/: || ()() |\n| '--'W|| '--'I|| '--'N|\n`------'`------'`------'{bcolors.ENDC}")
+    else:
+        print(f"{bcolors.PINK}.------..------..------..------..------..------..------..------..------.\n|B.--. ||L.--. ||A.--. ||C.--. ||K.--. ||J.--. ||A.--. ||C.--. ||K.--. |\n| :(): || :/\: || (\/) || :/\: || :/\: || :(): || (\/) || :/\: || :/\: |\n| ()() || (__) || :\/: || :\/: || :\/: || ()() || :\/: || :\/: || :\/: |\n| '--'B|| '--'L|| '--'A|| '--'C|| '--'K|| '--'J|| '--'A|| '--'C|| '--'K|\n`------'`------'`------'`------'`------'`------'`------'`------'`------'{bcolors.ENDC}")
+
+# Initialize cards and hand
+card1 = str(randint(1,10))
+card2 = str(randint(1,10))
+hand = [card1, card2]
+hand = hand
+
+total = int(card1) + int(card2)
+
+# Initialize dealer first card and total
+i_dealer = randint(1,3)
+dealer_cards = 2
+dealer_card1 = str(randint(2,11))
+
+dealer_total = randint(1,10) + int(dealer_card1)
+
+while dealer_total <= 16:
+    dealer_total += randint(1,10)
+    dealer_cards += 1
+
+match dealer_card1:
+    case "10":
+        if i_dealer == 1:
+            dealer_card1 = "J"
+        elif i_dealer == 2:
+            dealer_card1 = "Q"
+        elif i_dealer == 3:
+            dealer_card1 = "K"
+    case "11":
+        dealer_card1 = "A (11)"
+
+# Modify cards in the hand list
+transform_hand(hand)
+
+#== Start ==#
+clear()
+print(f"Blackjack by 0range_ ©\n\n")
+print(f"Dealer : {bcolors.GREEN_B}{dealer_card1}{bcolors.ENDC} " + "| ? "*(dealer_cards-1))
+print(f"Your hand : {bcolors.RED_B}{hand[0]}{bcolors.ENDC} | {bcolors.RED_B}{hand[1]}{bcolors.ENDC}")
+if total <= 16:
+    print(f"Total : {bcolors.RED_B}{total}{bcolors.ENDC} {bcolors.BLACK}(Hit){bcolors.ENDC}\n")
+else :
+    print(f"Total : {bcolors.RED_B}{total}{bcolors.ENDC} {bcolors.BLACK}(Stand){bcolors.ENDC}\n")
+
+user_input = input(f"{bcolors.OKBLUE}[Stand]{bcolors.ENDC} to stand\n{bcolors.OKBLUE}[Hit]{bcolors.ENDC} to hit\n{bcolors.WHITE_U}Input{bcolors.ENDC} - ").lower()
+
+match user_input:
+    case "stand":
+        clear()
+        print(f"\n{bcolors.TURQUOISE}You stood.{bcolors.ENDC}\n")
+        end()
+
+    case "hit":
+        clear()
+        print(f"\n{bcolors.TURQUOISE}You hit.{bcolors.ENDC}\n")
+
+        card3 = randint(1,10)
+        total += card3
+        hand.append(card3)
+        transform_hand(hand)
+
+        print(f"Dealer : {bcolors.GREEN_B}{dealer_card1}{bcolors.ENDC} " + "| ? "*(dealer_cards-1))
+        print(f"Your hand : {bcolors.RED_B}{hand[0]}{bcolors.ENDC} | {bcolors.RED_B}{hand[1]}{bcolors.ENDC} | {bcolors.RED_B}{hand[2]}{bcolors.ENDC}")
+        if total <= 16:
+            print(f"Total : {bcolors.RED_B}{total}{bcolors.ENDC} {bcolors.BLACK}(Hit){bcolors.ENDC}\n")
+        else :
+            print(f"Total : {bcolors.RED_B}{total}{bcolors.ENDC} {bcolors.BLACK}(Stand){bcolors.ENDC}\n")
+        
+        user_input = input(f"{bcolors.OKBLUE}[Stand]{bcolors.ENDC} to stand\n{bcolors.OKBLUE}[Hit]{bcolors.ENDC} to hit\n{bcolors.WHITE_U}Input{bcolors.ENDC} - ").lower()
+        match user_input:
+            case "stand":
+                clear()
+                print(f"\n{bcolors.TURQUOISE}You stood.{bcolors.ENDC}\n")
+                end()
+
+            case "hit":
+                clear()
+                print(f"\n{bcolors.TURQUOISE}You hit.{bcolors.ENDC}\n")
+
+                card4 = randint(1,10)
+                total += card4
+                hand.append(card4)
+                transform_hand(hand)
+
+                print(f"Dealer : {bcolors.GREEN_B}{dealer_card1}{bcolors.ENDC} " + "| ? "*(dealer_cards-1))
+                print(f"Your hand : {bcolors.RED_B}{hand[0]}{bcolors.ENDC} | {bcolors.RED_B}{hand[1]}{bcolors.ENDC} | {bcolors.RED_B}{hand[2]}{bcolors.ENDC} | {bcolors.RED_B}{hand[3]}{bcolors.ENDC}")
+                if total <= 16:
+                    print(f"Total : {bcolors.RED_B}{total}{bcolors.ENDC} {bcolors.BLACK}(Hit){bcolors.ENDC}\n")
+                else :
+                    print(f"Total : {bcolors.RED_B}{total}{bcolors.ENDC} {bcolors.BLACK}(Stand){bcolors.ENDC}\n")
+                end()
+
+            case _ :
+                print(f"\n{bcolors.WARNING}Type correctly dude.{bcolors.ENDC}")
+
+    case _ :
+        print(f"\n{bcolors.WARNING}Type correctly dude.{bcolors.ENDC}")
+
+print(f"\nBlackjack by 0range_ ©\n")
+
+# Fix ace 11 counting as 1
