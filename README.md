@@ -41,3 +41,9 @@ Roulette is one of those classic games we see in movies and everyone knows what 
 - Betting on green and winning rewards you 35 times your bet
 - Betting on a number (1-36) and winning rewards you with 35 times your bet
 - Betting on 0 and winning rewards you with 70 times your bet
+
+# Projects for the Future
+
+- Poker
+- Card race
+- User suggestions
