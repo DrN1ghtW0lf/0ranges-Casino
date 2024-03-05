@@ -23,7 +23,7 @@ def end(money, bet, bet_location):
         print(f"{bcolors.GREEN_B}  ______                                          \n /      \                                         \n|  $$$$$$\  ______    ______    ______   _______  \n| $$ __\$$ /      \  /      \  /      \ |       \ \n| $$|    \|  $$$$$$\|  $$$$$$\|  $$$$$$\| $$$$$$$\ \n| $$ \$$$$| $$   \$$| $$    $$| $$    $$| $$  | $$\n| $$__| $$| $$      | $$$$$$$$| $$$$$$$$| $$  | $$\n \$$    $$| $$       \$$     \ \$$     \| $$  | $$\n  \$$$$$$  \$$        \$$$$$$$  \$$$$$$$ \$$   \$${bcolors.ENDC}")
 
         if bet_location == "green":
-            money += bet*3
+            money += bet*35
             # print(f"You won {bet*3}")
             # print(f"You bet on {bet_location}")
         elif bet_location == "0":
