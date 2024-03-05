@@ -19,11 +19,16 @@ Blackjack is a well-know game in the world of casino. The rules are simple :
     - The dealer's first ace always counts as 11, the other ones always count as 1 (this may be unaccurate but who cares)
 - You can then choose to Hit, type `hit`, (draw a new card), which will add the card's value to the total or Stand, type `stand`, which will compare your total to the dealer's and cash you out. The game will recommend what action you should choose (but you don't have to follow it)
 - Your goal is to hit a total of 21 (Blackjack) but not go above that (Busted)
+- If your total is higher then the dealer's, you win
+- If your total is equal to the dealer's, you draw
+- If you bust, you lose
+- If you and the dealer bust, you draw
 
 ### Bets
 
 - Winning rewards you with 2 times your bet
 - Losing removes your bet from the bank
+- Drawing has no impact on the money in your bank
 - Blackjacking rewards you with 21 times your bet
 
 ## Roulette
@@ -47,3 +52,5 @@ Roulette is one of those classic games we see in movies and everyone knows what 
 - Poker
 - Card race
 - User suggestions
+
+- Add print_win() function
