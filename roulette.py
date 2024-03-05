@@ -24,16 +24,10 @@ def end(money, bet, bet_location):
 
         if bet_location == "green":
             money += bet*35
-            # print(f"You won {bet*3}")
-            # print(f"You bet on {bet_location}")
         elif bet_location == "0":
             money += bet*70
-            # print(f"You won {bet*70}")
-            # print(f"You bet on {bet_location}")
         else:
             money -= bet
-            # print(f"You lost {bet}")
-            # print(f"You bet on {bet_location}")
 
     elif number % 2 == 0:
         print(f"{bcolors.RED_B}{number}{bcolors.ENDC} || Red")
@@ -41,12 +35,8 @@ def end(money, bet, bet_location):
         
         if bet_location == "red":
             money += bet*1.5
-            # print(f"You won {bet*1.5}")
-            # print(f"You bet on {bet_location}")
         else :
             money -= bet
-            # print(f"You lost {bet}")
-            # print(f"You bet on {bet_location}")
 
     else:
         print(f"{bcolors.BLACK_B}{number}{bcolors.ENDC} || Black")
@@ -54,17 +44,11 @@ def end(money, bet, bet_location):
         
         if bet_location == "black":
             money += bet*1.5
-            # print(f"You won {bet*1.5}")
-            # print(f"You bet on {bet_location}")
         else:
             money -= bet
-            # print(f"You lost {bet}")
-            # print(f"You bet on {bet_location}")
     
     if bet_location == str(number):
         money += bet*35
-        # print(f"You won {bet*35}")
-        # print(f"You bet on {bet_location}")
 
     old_money = float(read())
     cashout = money - old_money
