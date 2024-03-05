@@ -71,7 +71,6 @@ print(f"{bcolors.WHITE_B}Where{bcolors.ENDC} do you place your bet :")
 print(f"{bcolors.OKBLUE}[Color]{bcolors.ENDC} Black({bcolors.BLACK_B}x1.5{bcolors.ENDC}),Red({bcolors.RED_B}x1.5{bcolors.ENDC}),Green({bcolors.GREEN_B}x3{bcolors.ENDC})")
 print(f"{bcolors.OKBLUE}[Number]{bcolors.ENDC} 1-36({bcolors.RED_B}x3{bcolors.BLACK_B}5{bcolors.ENDC}), 0({bcolors.GREEN_B}x70{bcolors.ENDC})")
 bet_location = input(f"{bcolors.WHITE_U}Input{bcolors.ENDC} - ")
-print(bet_location)
 
 time.sleep(0.25)
 print(f"\n{bcolors.OKCYAN}Rolling...{bcolors.ENDC}\n")
