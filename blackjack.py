@@ -1,6 +1,7 @@
 #================= Imports =================#
 from framework import bcolors, clear, read, write
 from random import randint
+import time
 import os
 
 #================= Default Variables =================#
@@ -28,23 +29,38 @@ def end(money, bet):
     print(f"Your total was {bcolors.RED_B}{total}{bcolors.ENDC}\nThe dealer's total was {bcolors.GREEN_B}{dealer_total}{bcolors.ENDC}\n")
     if total > 21:
         if dealer_total > 21:
+            time.sleep(0.25)
             print(f"{bcolors.TURQUOISE}.------..------..------..------.\n|D.--. ||R.--. ||A.--. ||W.--. |\n| :/\: || :(): || (\/) || :/\: |\n| (__) || ()() || :\/: || :\/: |\n| '--'D|| '--'R|| '--'A|| '--'W|\n`------'`------'`------'`------'{bcolors.ENDC}")
         else:
+            time.sleep(0.25)
             print(f"{bcolors.RED_B}.------..------..------..------..------..------.\n|B.--. ||U.--. ||S.--. ||T.--. ||E.--. ||D.--. |\n| :(): || (\/) || :/\: || :/\: || (\/) || :/\: |\n| ()() || :\/: || :\/: || (__) || :\/: || (__) |\n| '--'B|| '--'U|| '--'S|| '--'T|| '--'E|| '--'D|\n`------'`------'`------'`------'`------'`------'{bcolors.ENDC}")
             money -= bet
     elif total < 21:
         if dealer_total > 21:
+            time.sleep(0.25)
             print(f"{bcolors.GREEN_B}.------..------..------.\n|W.--. ||I.--. ||N.--. |\n| :/\: || (\/) || :(): |\n| :\/: || :\/: || ()() |\n| '--'W|| '--'I|| '--'N|\n`------'`------'`------'{bcolors.ENDC}")
             money += bet*2
         elif dealer_total > total or dealer_total == 21:
+            time.sleep(0.25)
             print(f"{bcolors.RED_B}.------..------..------..------..------..------.\n|B.--. ||U.--. ||S.--. ||T.--. ||E.--. ||D.--. |\n| :(): || (\/) || :/\: || :/\: || (\/) || :/\: |\n| ()() || :\/: || :\/: || (__) || :\/: || (__) |\n| '--'B|| '--'U|| '--'S|| '--'T|| '--'E|| '--'D|\n`------'`------'`------'`------'`------'`------'{bcolors.ENDC}")
             money -= bet
         else:
+            time.sleep(0.25)
             print(f"{bcolors.GREEN_B}.------..------..------.\n|W.--. ||I.--. ||N.--. |\n| :/\: || (\/) || :(): |\n| :\/: || :\/: || ()() |\n| '--'W|| '--'I|| '--'N|\n`------'`------'`------'{bcolors.ENDC}")
             money += bet*2
     else:
+        time.sleep(0.25)
         print(f"{bcolors.PINK}.------..------..------..------..------..------..------..------..------.\n|B.--. ||L.--. ||A.--. ||C.--. ||K.--. ||J.--. ||A.--. ||C.--. ||K.--. |\n| :(): || :/\: || (\/) || :/\: || :/\: || :(): || (\/) || :/\: || :/\: |\n| ()() || (__) || :\/: || :\/: || :\/: || ()() || :\/: || :\/: || :\/: |\n| '--'B|| '--'L|| '--'A|| '--'C|| '--'K|| '--'J|| '--'A|| '--'C|| '--'K|\n`------'`------'`------'`------'`------'`------'`------'`------'`------'{bcolors.ENDC}")
         money += bet*21
+
+    old_money = float(read())
+    cashout = money - old_money
+    if cashout > 0:
+        print(f"\n\n{bcolors.GREEN_B}+{cashout}{bcolors.ENDC}")
+    else:
+        print(f"\n\n{bcolors.RED_B}{cashout}{bcolors.ENDC}")
+    print(money)
+    write(money)
 
 # Initialize cards and hand
 card1 = str(randint(1,10))
@@ -87,6 +103,8 @@ bet = float(input(f"Place your {bcolors.GREEN_B}bet{bcolors.ENDC} ({bcolors.WHIT
 if bet > money:
     print(f"{bcolors.WARNING}You're poor.{bcolors.ENDC}")
     exit()
+clear()
+time.sleep(0.1)
 
 print(f"Dealer : {bcolors.GREEN_B}{dealer_card1}{bcolors.ENDC} " + "| ? "*(dealer_cards-1))
 print(f"Your hand : {bcolors.RED_B}{hand[0]}{bcolors.ENDC} | {bcolors.RED_B}{hand[1]}{bcolors.ENDC}")
@@ -123,12 +141,12 @@ match user_input:
         match user_input:
             case "stand":
                 clear()
-                print(f"\n{bcolors.TURQUOISE}You stood.{bcolors.ENDC}\n")
+                print(f"{bcolors.TURQUOISE}You stood.{bcolors.ENDC}\n")
                 end(money, bet)
 
             case "hit":
                 clear()
-                print(f"\n{bcolors.TURQUOISE}You hit.{bcolors.ENDC}\n")
+                print(f"{bcolors.TURQUOISE}You hit.{bcolors.ENDC}\n")
 
                 card4 = randint(1,10)
                 total += card4
