@@ -1,5 +1,5 @@
 #================= Imports =================#
-from framework import bcolors, clear
+from Games.framework import bcolors, clear
 import time
 import os
 
@@ -10,7 +10,7 @@ input = str(input(f"Which game do you want to play ?\n{bcolors.OKBLUE}[Blackjack
 match input:
     case "blackjack":
         time.sleep(0.25)
-        os.system("python3 blackjack.py")
+        os.system("python3 Games/blackjack.py")
     case "roulette":
         time.sleep(0.25)
-        os.system("python3 roulette.py")
+        os.system("python3 Games/roulette.py")
