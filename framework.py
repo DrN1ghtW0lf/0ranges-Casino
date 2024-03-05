@@ -1,4 +1,5 @@
 from colorama import Fore, Style
+import time
 import os
 
 class bcolors:
@@ -16,19 +17,124 @@ class bcolors:
     RED_B = '\033[31;1m'
     GREEN_B = '\033[32;1m'
     PINK = '\033[35m'
+    PINK_B = '\033[35;1m'
     WHITE_B = '\033[37;1m'
     WHITE_U = '\033[37;4m'
     TURQUOISE = '\033[36m'
+    TURQUOISE_B = '\033[36;1m'
     ORANGE = '\e[38;5;214m'
 
 def clear():
     os.system("clear")
 
-def write(new_score):
-    f = open("bank.txt", "w")
-    f.write(str(new_score))
-
 def read():
     f = open("bank.txt", "r")
     score = f.read()
     return score
+
+def write(new_score):
+    f = open("bank.txt", "w")
+    f.write(str(new_score))
+
+def end_print(parameter):
+    match parameter:
+        case "win":
+            time.sleep(0.25)
+            print(f"{bcolors.GREEN_B}.------..------..------.{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.GREEN_B}|W.--. ||I.--. ||N.--. |{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.GREEN_B}| :/\: || (\/) || :(): |{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.GREEN_B}| :\/: || :\/: || ()() |{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.GREEN_B}| '--'W|| '--'I|| '--'N|{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.GREEN_B}`------'`------'`------'{bcolors.ENDC}")
+
+        case "lose":
+            time.sleep(0.25)
+            print(f"{bcolors.RED_B}.------..------..------..------.{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.RED_B}|L.--. ||O.--. ||S.--. ||E.--. |{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.RED_B}| :/\: || :/\: || :/\: || (\/) |{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.RED_B}| (__) || :\/: || :\/: || :\/: |{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.RED_B}| '--'L|| '--'O|| '--'S|| '--'E|{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.RED_B}`------'`------'`------'`------'{bcolors.ENDC}")
+
+        case "draw":
+            time.sleep(0.25)
+            print(f"{bcolors.TURQUOISE_B}.------..------..------..------.{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.TURQUOISE_B}|D.--. ||R.--. ||A.--. ||W.--. |{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.TURQUOISE_B}| :/\: || :(): || (\/) || :/\: |{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.TURQUOISE_B}| (__) || ()() || :\/: || :\/: |{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.TURQUOISE_B}| '--'D|| '--'R|| '--'A|| '--'W|{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.TURQUOISE_B}`------'`------'`------'`------'{bcolors.ENDC}")
+
+        case "jackpot":
+            time.sleep(0.25)
+            print(f"{bcolors.PINK_B}.------..------..------..------..------..------..------.{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.PINK_B}|J.--. ||A.--. ||C.--. ||K.--. ||P.--. ||O.--. ||T.--. |{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.PINK_B}| :(): || (\/) || :/\: || :/\: || :/\: || :/\: || :/\: |{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.PINK_B}| ()() || :\/: || :\/: || :\/: || (__) || :\/: || (__) |{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.PINK_B}| '--'J|| '--'A|| '--'C|| '--'K|| '--'P|| '--'O|| '--'T|{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.PINK_B}`------'`------'`------'`------'`------'`------'`------'{bcolors.ENDC}")
+
+        case "red":
+            time.sleep(0.25)
+            print(f"{bcolors.RED_B}.------..------..------.{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.RED_B}|R.--. ||E.--. ||D.--. |{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.RED_B}| :(): || (\/) || :/\: |{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.RED_B}| ()() || :\/: || (__) |{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.RED_B}| '--'R|| '--'E|| '--'D|{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.RED_B}`------'`------'`------'{bcolors.ENDC}")
+
+        case "black":
+            time.sleep(0.25)
+            print(f"{bcolors.BLACK_B}.------..------..------..------..------.{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.BLACK_B}|B.--. ||L.--. ||A.--. ||C.--. ||K.--. |{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.BLACK_B}| :(): || :/\: || (\/) || :/\: || :/\: |{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.BLACK_B}| ()() || (__) || :\/: || :\/: || :\/: |{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.BLACK_B}| '--'B|| '--'L|| '--'A|| '--'C|| '--'K|{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.BLACK_B}`------'`------'`------'`------'`------'{bcolors.ENDC}")
+
+        case "green":
+            time.sleep(0.25)
+            print(f"{bcolors.GREEN_B}.------..------..------..------..------.{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.GREEN_B}|G.--. ||R.--. ||E.--. ||E.--. ||N.--. |{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.GREEN_B}| :/\: || :(): || (\/) || (\/) || :(): |{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.GREEN_B}| :\/: || ()() || :\/: || :\/: || ()() |{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.GREEN_B}| '--'G|| '--'R|| '--'E|| '--'E|| '--'N|{bcolors.ENDC}")
+            time.sleep(0.25)
+            print(f"{bcolors.GREEN_B}`------'`------'`------'`------'`------'{bcolors.ENDC}")
+
+        case _ :
+            print(f"{bcolors.WARNING}Type correctly{bcolors.ENDC}")

@@ -1,5 +1,5 @@
 #================= Imports =================#
-from framework import bcolors, clear, read, write
+from framework import bcolors, clear, read, write,end_print
 from random import randint
 import time
 import os
@@ -20,7 +20,7 @@ def print_numbers():
 def end(money, bet, bet_location):
     if number == 0:
         print(f"{bcolors.GREEN_B}{number}{bcolors.ENDC} || Green")
-        print(f"{bcolors.GREEN_B}  ______                                          \n /      \                                         \n|  $$$$$$\  ______    ______    ______   _______  \n| $$ __\$$ /      \  /      \  /      \ |       \ \n| $$|    \|  $$$$$$\|  $$$$$$\|  $$$$$$\| $$$$$$$\ \n| $$ \$$$$| $$   \$$| $$    $$| $$    $$| $$  | $$\n| $$__| $$| $$      | $$$$$$$$| $$$$$$$$| $$  | $$\n \$$    $$| $$       \$$     \ \$$     \| $$  | $$\n  \$$$$$$  \$$        \$$$$$$$  \$$$$$$$ \$$   \$${bcolors.ENDC}")
+        end_print("green")
 
         if bet_location == "green":
             money += bet*35
@@ -31,7 +31,7 @@ def end(money, bet, bet_location):
 
     elif number % 2 == 0:
         print(f"{bcolors.RED_B}{number}{bcolors.ENDC} || Red")
-        print(f"{bcolors.RED_B} _______                   __ \n|       \                 |  \ \n| $$$$$$$\  ______    ____| $$\n| $$__| $$ /      \  /      $$\n| $$    $$|  $$$$$$\|  $$$$$$$\n| $$$$$$$\| $$    $$| $$  | $$\n| $$  | $$| $$$$$$$$| $$__| $$\n| $$  | $$ \$$     \ \$$    $$\n \$$   \$$  \$$$$$$$  \$$$$$$${bcolors.ENDC}")
+        end_print("red")
         
         if bet_location == "red":
             money += bet*1.5
@@ -40,7 +40,7 @@ def end(money, bet, bet_location):
 
     else:
         print(f"{bcolors.BLACK_B}{number}{bcolors.ENDC} || Black")
-        print(f"{bcolors.BLACK_B}_______   __                      __       \n|       \ |  \                    |  \      \n| $$$$$$$\| $$  ______    _______ | $$   __ \n| $$__/ $$| $$ |      \  /       \| $$  /  \ \n| $$    $$| $$  \$$$$$$\|  $$$$$$$| $$_/  $$\n| $$$$$$$\| $$ /      $$| $$      | $$   $$ \n| $$__/ $$| $$|  $$$$$$$| $$_____ | $$$$$$\ \n| $$    $$| $$ \$$    $$ \$$     \| $$  \$$\ \n \$$$$$$$  \$$  \$$$$$$$  \$$$$$$$ \$$   \$${bcolors.ENDC}")
+        end_print("black")
         
         if bet_location == "black":
             money += bet*1.5
