@@ -1,7 +1,10 @@
 #================= Imports =================#
-from framework import bcolors, clear
+from framework import bcolors, clear, read, write
 from random import randint
 import os
+
+#================= Default Variables =================#
+money = float(read())
 
 #================= Function =================#
 def transform_hand(given_hand):
@@ -10,6 +13,7 @@ def transform_hand(given_hand):
         if card == "1":
             if total <= 10:
                 given_hand[index] = "A (11)"
+                total += 10
             else:
                 given_hand[index] = "A (1)"
         elif card == "10":
@@ -20,22 +24,27 @@ def transform_hand(given_hand):
             else:
                 given_hand[index] = "K"
 
-def end():
+def end(money, bet):
     print(f"Your total was {bcolors.RED_B}{total}{bcolors.ENDC}\nThe dealer's total was {bcolors.GREEN_B}{dealer_total}{bcolors.ENDC}\n")
     if total > 21:
         if dealer_total > 21:
             print(f"{bcolors.TURQUOISE}.------..------..------..------.\n|D.--. ||R.--. ||A.--. ||W.--. |\n| :/\: || :(): || (\/) || :/\: |\n| (__) || ()() || :\/: || :\/: |\n| '--'D|| '--'R|| '--'A|| '--'W|\n`------'`------'`------'`------'{bcolors.ENDC}")
         else:
             print(f"{bcolors.RED_B}.------..------..------..------..------..------.\n|B.--. ||U.--. ||S.--. ||T.--. ||E.--. ||D.--. |\n| :(): || (\/) || :/\: || :/\: || (\/) || :/\: |\n| ()() || :\/: || :\/: || (__) || :\/: || (__) |\n| '--'B|| '--'U|| '--'S|| '--'T|| '--'E|| '--'D|\n`------'`------'`------'`------'`------'`------'{bcolors.ENDC}")
+            money -= bet
     elif total < 21:
         if dealer_total > 21:
             print(f"{bcolors.GREEN_B}.------..------..------.\n|W.--. ||I.--. ||N.--. |\n| :/\: || (\/) || :(): |\n| :\/: || :\/: || ()() |\n| '--'W|| '--'I|| '--'N|\n`------'`------'`------'{bcolors.ENDC}")
+            money += bet*2
         elif dealer_total > total or dealer_total == 21:
             print(f"{bcolors.RED_B}.------..------..------..------..------..------.\n|B.--. ||U.--. ||S.--. ||T.--. ||E.--. ||D.--. |\n| :(): || (\/) || :/\: || :/\: || (\/) || :/\: |\n| ()() || :\/: || :\/: || (__) || :\/: || (__) |\n| '--'B|| '--'U|| '--'S|| '--'T|| '--'E|| '--'D|\n`------'`------'`------'`------'`------'`------'{bcolors.ENDC}")
+            money -= bet
         else:
             print(f"{bcolors.GREEN_B}.------..------..------.\n|W.--. ||I.--. ||N.--. |\n| :/\: || (\/) || :(): |\n| :\/: || :\/: || ()() |\n| '--'W|| '--'I|| '--'N|\n`------'`------'`------'{bcolors.ENDC}")
+            money += bet*2
     else:
         print(f"{bcolors.PINK}.------..------..------..------..------..------..------..------..------.\n|B.--. ||L.--. ||A.--. ||C.--. ||K.--. ||J.--. ||A.--. ||C.--. ||K.--. |\n| :(): || :/\: || (\/) || :/\: || :/\: || :(): || (\/) || :/\: || :/\: |\n| ()() || (__) || :\/: || :\/: || :\/: || ()() || :\/: || :\/: || :\/: |\n| '--'B|| '--'L|| '--'A|| '--'C|| '--'K|| '--'J|| '--'A|| '--'C|| '--'K|\n`------'`------'`------'`------'`------'`------'`------'`------'`------'{bcolors.ENDC}")
+        money += bet*21
 
 # Initialize cards and hand
 card1 = str(randint(1,10))
@@ -73,6 +82,12 @@ transform_hand(hand)
 #== Start ==#
 clear()
 print(f"Blackjack by 0range_ ©\n\n")
+
+bet = float(input(f"Place your {bcolors.GREEN_B}bet{bcolors.ENDC} ({bcolors.WHITE_U}<{money}{bcolors.ENDC}) : "))
+if bet > money:
+    print(f"{bcolors.WARNING}You're poor.{bcolors.ENDC}")
+    exit()
+
 print(f"Dealer : {bcolors.GREEN_B}{dealer_card1}{bcolors.ENDC} " + "| ? "*(dealer_cards-1))
 print(f"Your hand : {bcolors.RED_B}{hand[0]}{bcolors.ENDC} | {bcolors.RED_B}{hand[1]}{bcolors.ENDC}")
 if total <= 16:
@@ -86,7 +101,7 @@ match user_input:
     case "stand":
         clear()
         print(f"\n{bcolors.TURQUOISE}You stood.{bcolors.ENDC}\n")
-        end()
+        end(money, bet)
 
     case "hit":
         clear()
@@ -109,7 +124,7 @@ match user_input:
             case "stand":
                 clear()
                 print(f"\n{bcolors.TURQUOISE}You stood.{bcolors.ENDC}\n")
-                end()
+                end(money, bet)
 
             case "hit":
                 clear()
@@ -126,7 +141,7 @@ match user_input:
                     print(f"Total : {bcolors.RED_B}{total}{bcolors.ENDC} {bcolors.BLACK}(Hit){bcolors.ENDC}\n")
                 else :
                     print(f"Total : {bcolors.RED_B}{total}{bcolors.ENDC} {bcolors.BLACK}(Stand){bcolors.ENDC}\n")
-                end()
+                end(money, bet)
 
             case _ :
                 print(f"\n{bcolors.WARNING}Type correctly dude.{bcolors.ENDC}")
@@ -135,5 +150,3 @@ match user_input:
         print(f"\n{bcolors.WARNING}Type correctly dude.{bcolors.ENDC}")
 
 print(f"\nBlackjack by 0range_ ©\n")
-
-# Fix ace 11 counting as 1
