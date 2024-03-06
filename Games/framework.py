@@ -1,3 +1,4 @@
+from stat import S_IREAD, S_IRGRP, S_IROTH, S_IWUSR
 from colorama import Fore, Style
 import time
 import os
@@ -33,8 +34,10 @@ def read(): # Stores bank.txt content to value
     return score
 
 def write(new_score): # Overwrites bank.txt with a new score
+    os.chmod("bank.txt", S_IWUSR|S_IREAD)
     f = open("bank.txt", "w")
     f.write(str(new_score))
+    os.chmod("bank.txt", S_IREAD|S_IRGRP|S_IROTH)
 
 def end_print(parameter): # Progressively prints the end text
     match parameter:

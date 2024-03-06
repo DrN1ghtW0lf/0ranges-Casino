@@ -1,4 +1,5 @@
 #================= Imports =================#
+from stat import S_IREAD, S_IRGRP, S_IROTH, S_IWUSR
 from Games.framework import bcolors, clear, write
 import platform # Checks OS
 import time
@@ -35,4 +36,4 @@ match input:
         print(f"\n{bcolors.WARNING}Type correctly dude.{bcolors.ENDC}")
 
 if not os.path.exists("bank.txt"): # Check if bank.txt exists
-    write("1000")
+    write("1000.0")
