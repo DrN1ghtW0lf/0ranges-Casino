@@ -34,10 +34,10 @@ def read(): # Stores bank.txt content to value
     return score
 
 def write(new_score): # Overwrites bank.txt with a new score
-    os.chmod("bank.txt", S_IWUSR|S_IREAD)
+    os.chmod("bank.txt", S_IWUSR|S_IREAD) # Sets as readable and editable
     f = open("bank.txt", "w")
     f.write(str(new_score))
-    os.chmod("bank.txt", S_IREAD|S_IRGRP|S_IROTH)
+    os.chmod("bank.txt", S_IREAD|S_IRGRP|S_IROTH) # Sets as readable but uneditable (in theory)
 
 def end_print(parameter): # Progressively prints the end text
     match parameter:
