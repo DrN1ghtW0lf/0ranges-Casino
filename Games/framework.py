@@ -2,7 +2,7 @@ from colorama import Fore, Style
 import time
 import os
 
-class bcolors:
+class bcolors: # Terminal Colors
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
     OKCYAN = '\033[96m'
@@ -24,19 +24,19 @@ class bcolors:
     TURQUOISE_B = '\033[36;1m'
     ORANGE = '\e[38;5;214m'
 
-def clear():
+def clear(): # clears the terminal
     os.system("clear")
 
-def read():
+def read(): # Stores bank.txt content to value
     f = open("bank.txt", "r")
     score = f.read()
     return score
 
-def write(new_score):
+def write(new_score): # Overwrites bank.txt with a new score
     f = open("bank.txt", "w")
     f.write(str(new_score))
 
-def end_print(parameter):
+def end_print(parameter): # Progressively prints the end text
     match parameter:
         case "win":
             time.sleep(0.25)

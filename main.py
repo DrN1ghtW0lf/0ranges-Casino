@@ -1,6 +1,6 @@
 #================= Imports =================#
-from Games.framework import bcolors, clear
-import platform
+from Games.framework import bcolors, clear, write
+import platform # Checks OS
 import time
 import os
 
@@ -12,21 +12,27 @@ input = str(input(f"Which game do you want to play ?\n{bcolors.OKBLUE}[Blackjack
 match input:
     case "blackjack":
         time.sleep(0.25)
-        if platform.system() == "Darwin":
+        if platform.system() == "Darwin": # Check is os is mac
             os.system("python3 Games/blackjack.py")
         else:
             os.system("python Games/blackjack.py")
+
     case "roulette":
         time.sleep(0.25)
         if platform.system() == "Darwin":
             os.system("python3 Games/blackjack.py")
         else:
             os.system("python Games/blackjack.py")
+
     case "coinflip":
         time.sleep(0.25)
         if platform.system() == "Darwin":
             os.system("python3 Games/blackjack.py")
         else:
             os.system("python Games/blackjack.py")
+
     case _ :
         print(f"\n{bcolors.WARNING}Type correctly dude.{bcolors.ENDC}")
+
+if not os.path.exists("bank.txt"): # Check if bank.txt exists
+    write("1000")
