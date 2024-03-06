@@ -1,7 +1,7 @@
 
 # 0range_'s Casino
 
-Welcome to my casino ! This is a compilation of well-known casino games such as Blackjack, Roulette *(for now, more coming soon)*
+Welcome to my casino ! This is a compilation of well-known casino games such as Blackjack, Roulette and coinflip *(for now, more coming soon)*
 
 ## Money
 
