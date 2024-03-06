@@ -47,6 +47,14 @@ Roulette is one of those classic games we see in movies and everyone knows what 
 - Betting on a number (1-36) and winning rewards you with 35 times your bet
 - Betting on 0 and winning rewards you with 70 times your bet
 
+## Coinflip
+
+I don't think I need to explain this.
+
+### Bets
+
+- Betting correctly gives back 2 times your bet
+
 # Projects for the Future
 
 - Poker
